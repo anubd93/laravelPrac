@@ -16,7 +16,11 @@ class PageController extends Controller
         return view('pages.about')->with('title', $title);
     }
     public function service(){
-        $title = 'WELCOME TO SERVICE PAGE';
-        return view('pages.service')->with('title', $title);
+        $data = array(
+            'title' => 'WELCOME TO SERVICE PAGE',
+            'services' => ['java', 'php', 'ruby']
+        );
+
+        return view('pages.service')->with($data);
     }
 }
