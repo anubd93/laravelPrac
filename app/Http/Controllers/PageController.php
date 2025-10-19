@@ -25,4 +25,3 @@ class PageController extends Controller
     }
 }
 
-// Test
