@@ -24,3 +24,5 @@ class PageController extends Controller
         return view('pages.service')->with($data);
     }
 }
+
+// Test
