@@ -61,4 +61,26 @@ class AuthController extends Controller
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    public function getUser(){
+        try {
+            $response = $this->authService->getUser(Auth::id());
+            if(is_object($response)){
+                return response(
+                    [
+                        'success' => true,
+                        'error' => null,
+                        'data' => $response
+                    ], Response::HTTP_OK);
+            } else {
+                return response(
+                    [
+                        'success' => false,
+                        'error' => 'User not registered',
+                    ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+        } catch (Exception $e) {
+            return response(['success' => false, 'error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }
